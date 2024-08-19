@@ -68,7 +68,8 @@ zstyle ':completion:*' menu yes select
 
 # Aliases
 alias ls='eza --long --all --git --color-scale-mode=gradient'
-alias lst='eza --long --all --git -color-scale-mode=gradient --sort modified'
+alias lst='eza --long --all --git --color-scale-mode=gradient --sort modified'
+alias lstr='eza --long --all -T --git --color-scale-mode=gradient --sort modified'
 alias fzfp='fzf --preview "bat --style numbers --color always {}"'
 alias cat='bat --paging never --theme DarkNeon --style plain'
 

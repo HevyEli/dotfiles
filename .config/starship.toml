@@ -2,9 +2,23 @@
 
 add_newline = true
 
+# Change the default prompt characters
 [character]
-success_symbol = '[➜](bold green)'
-error_symbol = '[✗](bold red) '
+success_symbol = "[](green)"
+error_symbol = "[](red)"
+
+# Shows an icon depending on what distro it is running on
+[env_var.STARSHIP_DISTRO]
+format = '[$env_value](bold white) '
+variable = "STARSHIP_DISTRO"
+disabled = false
+
+
+# Shows an icon depending on what device it is running on
+[env_var.STARSHIP_DEVICE]
+format = '[$env_value](bold yellow)'
+variable = "STARSHIP_DEVICE"
+disabled = false
 
 [package]
 disabled = true
@@ -14,7 +28,12 @@ min_time = 5000
 format = 'underwent [$duration](bold yellow)'
 
 [aws]
-disabled = true
+disabled = false
+format = ''
+style = 'bold blue'
+[aws.region_aliases]
+ap-southeast-2 = 'au'
+us-east-1 = 'va'
 
 [azure]
 format = 'on [$symbol($subscription)]($style) '
@@ -23,8 +42,6 @@ disabled = true
 [gcloud]
 disabled = true
 
-[directory]
-truncate_to_repo = true
 
 [docker_context]
 disabled = true
@@ -46,11 +63,74 @@ renamed = '👅'
 deleted = '🗑'
 disabled = false
 
-[golang]
+[git_metrics]
+format = "([+$added]($added_style))[]($added_style)"
+added_style = "fg:#1C3A5E bg:#FCF392"
+deleted_style = "fg:bright-red bg:235"
+disabled = false
+
+# Shows kubernetes context and namespace
+[kubernetes]
+format = '[󱃾 $context\($namespace\)](bold purple) '
+disabled = false
+
+# ---
+
+# Disable some modules that aren't needed anymore
+[username]
+show_always = true
+style_user = "bg:#9A348E"
+style_root = "bg:#9A348E"
+format = '[$user ]($style)'
+
+[directory]
+style = "bg:#DA627D"
+format = "[ $path ]($style)"
+# truncate_to_repo = true
+truncation_length = 3
+truncation_symbol = "&hellip;/"
+
+[directory.substitutions]
+"Documents" = "&#128196; "
+"Downloads" = "&#128229; "
+"Music" = "&#127900; "
+"Pictures" = "&#128247; "
+# Keep in mind that the order matters. For example:
+# "Important Documents" = " &#63256;&#61738; "
+# will not be replaced, because "Documents" was already substituted before.
+# So either put "Important Documents" before "Documents" or use the substituted version:
+# "Important &#63256; " = " &#63256;&#61738; "
+
+[vagrant]
 disabled = true
 
-[kubernetes]
+[helm]
+format = 'via [⎈ $version](bold white) '
+
+[python]
 disabled = false
+
+[nodejs]
+disabled = false
+
+[terraform]
+disabled = false
+#format = '[🏎💨 $version$workspace]($style) '
+
+[golang]
+symbol = "&#128057; "
+style = "bg:#86BBD8"
+format = '[[ $symbol ($version) ](bg:#86BBD8)]($style)'
+
+[java]
+symbol = " "
+style = "bg:#86BBD8"
+format = '[[ $symbol ($version) ](bg:#86BBD8)]($style)'
+
+[rust]
+symbol = "&#129408;"
+style = "bg:#86BBD8"
+format = '[[ $symbol ($version) ](bg:#86BBD8)]($style)'
 
 [nix_shell]
 disabled = false

@@ -7,11 +7,42 @@ bash -c "$(curl --fail --show-error --silent \
 # https://github.com/tonsky/FiraCode/wiki/Installing
 brew install --cask font-fira-code
 
-# https://www.kcl-lang.io/docs/user_docs/getting-started/install#homebrew-macos-1
-brew install kcl-lang/tap/kcl-lsp
 
 # https://www.jetify.com/devbox/docs/installing_devbox/
 curl -fsSL https://get.jetify.com/devbox | bash
 
-# https://obsproject.com/kb/mac-installation#homebrew
-brew install --cask obs
+brew install zoxide
+
+bew install awscli
+
+brew install bat
+
+brew install fzf
+
+brew install eza
+
+brew install zsh-async 
+brew install zsh-syntax-highlighting
+brew install wget
+brew install vault
+brew install tree-sitter
+brew install tree
+brew install tmux
+brew install thefuck
+brew install terraform
+brew install telnet
+brew install starship
+brew install python@3.12
+brew install neovim
+brew install maven
+brew install lazygit
+brew install kubectx
+brew install k9s
+brew install jq
+brew install helm
+brew install docker-completion
+brew install docker
+brew install coreutils
+brew install base64
+brew install ca-certificates
+brew install z

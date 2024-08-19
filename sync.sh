@@ -1,6 +1,6 @@
-gcloud auth login
+# gcloud auth login
 
-teller env >.config/fabric/.env
+teller env >.config/eliasm/.env
 
 rm ~/.zshrc
 

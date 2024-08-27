@@ -5,14 +5,15 @@ add_newline = true
 
 format = """
 [](color_orange)\
-$os\
 $username\
 [](bg:color_yellow fg:color_orange)\
 $directory\
 [](fg:color_yellow bg:color_aqua)\
 $git_branch\
 $git_status\
-[](fg:color_aqua bg:color_blue)\
+[](fg:color_green bg:color_purple)\
+[$kubernetes](fg:color_fg0 bg:color_purple)\
+[](fg:color_purple bg:color_bg3)\
 $c\
 $rust\
 $golang\
@@ -20,15 +21,14 @@ $nodejs\
 $php\
 $java\
 $kotlin\
-$haskell\
 $python\
 [](fg:color_blue bg:color_bg3)\
 $docker_context\
 $conda\
 [](fg:color_bg3 bg:color_bg1)\
 $time\
-[ ](fg:color_bg1)\
-$line_break$character"""
+[](fg:color_bg1)\
+$character"""
 
 palette = 'gruvbox_dark'
 
@@ -47,7 +47,6 @@ color_yellow = '#d79921'
 [os.symbols]
 Macos = ""
 
-
 # Change the default prompt characters
 [character]
 success_symbol = "[](green)"
@@ -58,7 +57,6 @@ error_symbol = "[](red)"
 format = '[$env_value](bold white) '
 variable = "STARSHIP_DISTRO"
 disabled = false
-
 
 # Shows an icon depending on what device it is running on
 [env_var.STARSHIP_DEVICE]
@@ -88,9 +86,8 @@ disabled = true
 [gcloud]
 disabled = true
 
-
 [docker_context]
-disabled = false
+disabled = true
 
 [git_branch]
 symbol = ""
@@ -121,10 +118,8 @@ disabled = false
 
 # Shows kubernetes context and namespace
 [kubernetes]
-format = '[󱃾 $context\($namespace\)](bold purple) '
+format = '[$cluster \($namespace\)](bg:color_purple fg:color_fg0)'
 disabled = false
-
-# ---
 
 # Disable some modules that aren't needed anymore
 [username]
@@ -135,21 +130,14 @@ format = '[ $user ]($style)'
 
 [directory]
 style = "fg:color_fg0 bg:color_yellow"
-format = "[ $path ]($style)"
-# truncate_to_repo = true
+format = "[$path]($style)[$read_only]($read_only_style)"
 truncation_length = 3
-#truncation_symbol = "&hellip;/"
 
 [directory.substitutions]
 "Documents" = "&#128196; "
 "Downloads" = "&#128229; "
 "Music" = "&#127900; "
 "Pictures" = "&#128247; "
-# Keep in mind that the order matters. For example:
-# "Important Documents" = " &#63256;&#61738; "
-# will not be replaced, because "Documents" was already substituted before.
-# So either put "Important Documents" before "Documents" or use the substituted version:
-# "Important &#63256; " = " &#63256;&#61738; "
 
 [vagrant]
 disabled = true
@@ -165,7 +153,6 @@ disabled = false
 
 [terraform]
 disabled = false
-#format = '[🏎💨 $version$workspace]($style) '
 
 [golang]
 symbol = "&#128057; "

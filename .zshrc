@@ -1,6 +1,11 @@
 # Initialize zsh completion
 autoload -Uz compinit
 compinit
+setopt prompt_subst
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+autoload bashcompinit && bashcompinit
+source <(kubectl completion zsh)
+complete -C '/usr/local/bin/aws_completer' aws
 
 # History options
 setopt HIST_IGNORE_ALL_DUPS

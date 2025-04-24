@@ -6,16 +6,16 @@ compinit
 setopt HIST_IGNORE_ALL_DUPS
 
 # Devbox configuration
-DEVBOX_NO_PROMPT=true
-eval "$(devbox global shellenv --init-hook)"
+#DEVBOX_NO_PROMPT=true
+#eval "$(devbox global shellenv --init-hook)"
 
 # Git configuration
 LANG=en_US.UTF-8
 
 # Command completions
-source <(devbox completion zsh)
-source <(docker completion zsh)
-source <(kubectl completion zsh)
+#source <(devbox completion zsh)
+#source <(docker completion zsh)
+#source <(kubectl completion zsh)
 
 # Starship prompt setup
 [[ -f ~/.zsh/starship.zsh ]] && source ~/.zsh/starship.zsh
@@ -67,9 +67,9 @@ zstyle ':completion:*' menu yes select
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Aliases
-alias ls='eza --long --all --git --color-scale-mode=gradient'
+alias lsl='eza --long --all --git --color-scale-mode=gradient'
 alias lst='eza --long --all --git --color-scale-mode=gradient --sort modified'
-alias lstr='eza --long --all -T --git --color-scale-mode=gradient --sort modified'
+alias lstra='eza --long --all -T --git --color-scale-mode=gradient --sort modified'
 alias fzfp='fzf --preview "bat --style numbers --color always {}"'
 alias cat='bat --paging never --theme DarkNeon --style plain'
 
@@ -95,7 +95,8 @@ export EDITOR=vim
 export KUBE_EDITOR=vim
 export AWS_CLI_AUTO_PROMPT=on-partial
 export PATH="${PATH}:${HOME}/.krew/bin"
-export KUBECONFIG=~/.kube/config
+# export KUBECONFIG=~/.kube/config
+export KUBECONFIG=~/.kube/config-payg:~/.kube/config-ocs:~/.kube/config-aws
 
 # Load the zsh-z plugin
 plugins=(
@@ -115,3 +116,13 @@ plugins=(
 
 # Load additional environment variables
 [[ -f ~/.zsh/envs.zsh ]] && source ~/.zsh/envs.zsh
+# Source the Lazyman shell initialization for aliases and nvims selector
+# shellcheck source=.config/nvim-Lazyman/.lazymanrc
+[ -f ~/.config/nvim-Lazyman/.lazymanrc ] && source ~/.config/nvim-Lazyman/.lazymanrc
+# Source the Lazyman .nvimsbind for nvims key binding
+# shellcheck source=.config/nvim-Lazyman/.nvimsbind
+[ -f ~/.config/nvim-Lazyman/.nvimsbind ] && source ~/.config/nvim-Lazyman/.nvimsbind
+# Luarocks bin path
+[ -d ${HOME}/.luarocks/bin ] && {
+  export PATH="${HOME}/.luarocks/bin${PATH:+:${PATH}}"
+}

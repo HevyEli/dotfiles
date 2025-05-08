@@ -85,7 +85,9 @@ alias kns="kubens"
 alias kl="kubectl logs -f"
 alias ke="kubectl exec -it"
 alias kcns='kubectl config set-context --current --namespace'
-alias podname=''
+alias podname='kubectl get pod -o jsonpath="{.metadata.name}"'
+# Podman
+alias pdp='podman pull --tls-verify=false'
 
 # Eza
 alias l="eza -l --icons --git -a"

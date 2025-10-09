@@ -15,6 +15,13 @@ alias hosts='ansible-inventory --graph'
 alias grep='grep -i --color'
 alias pip='pip3'
 
+# Aliases
+alias lsl='eza --long --all --git --color-scale-mode=gradient'
+alias lst='eza --long --all --git --color-scale-mode=gradient --sort modified'
+alias lstra='eza --long --all -T --git --color-scale-mode=gradient --sort modified'
+alias fzfp='fzf --preview "bat --style numbers --color always {}"'
+alias cat='bat --paging never --theme DarkNeon --style plain'
+
 # Kubernetes
 alias k='kubectl'
 alias h='helm'
@@ -38,7 +45,7 @@ alias fixGitLabSSH="ssh-add -K ~/.ssh/michaleli-key-rsa && eval "$(ssh-agent -s)
 alias code='open -a "Visual Studio Code"'
 alias la=tree
 alias rr='ranger'
-
+alias getIpFromRePro='~/Documents/repos/private/tools/getIpFromRePro.sh'
 # Docker
 alias dco="docker compose"
 alias dps="docker ps"

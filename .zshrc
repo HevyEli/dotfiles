@@ -71,12 +71,7 @@ zstyle ':completion:*' menu yes select
 # Setup Fuzzy Finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Aliases
-alias lsl='eza --long --all --git --color-scale-mode=gradient'
-alias lst='eza --long --all --git --color-scale-mode=gradient --sort modified'
-alias lstra='eza --long --all -T --git --color-scale-mode=gradient --sort modified'
-alias fzfp='fzf --preview "bat --style numbers --color always {}"'
-alias cat='bat --paging never --theme DarkNeon --style plain'
+
 
 # Additional zsh files
 [[ -f ~/.zsh/aliases.zsh ]] && source ~/.zsh/aliases.zsh
@@ -96,8 +91,8 @@ lg() {
 export PATH="/usr/local/bin:$HOME/.local/bin:$PATH:$HOME/bin"
 export ZSH="${HOME}/.oh-my-zsh"
 export GOPATH="${HOME}/go"
-export EDITOR=vim
-export KUBE_EDITOR=vim
+export EDITOR=nvim
+export KUBE_EDITOR=nvim
 export AWS_CLI_AUTO_PROMPT=on-partial
 export PATH="${PATH}:${HOME}/.krew/bin"
 # export KUBECONFIG=~/.kube/config
@@ -145,4 +140,9 @@ fcd() { cd "$(find . -type d -not -path '*/.*' | fzf)" && l; }
 f() { echo "$(find . -type f -not -path '*/.*' | fzf)" | pbcopy }
 fv() { nvim "$(find . -type f -not -path '*/.*' | fzf)" }
 
-export PATH=/opt/homebrew/bin:$PATH
+# ---- PATH (single, consolidated) ----
+export PATH="/opt/homebrew/bin:/usr/local/bin:$HOME/.local/bin:$HOME/bin:$HOME/.krew/bin:$PATH"
+export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export GHOSTTY_RESOURCES=~/.config/ghostty/themes

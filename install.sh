@@ -46,3 +46,4 @@ brew install coreutils
 brew install base64
 brew install ca-certificates
 brew install z
+brew install ghostty
